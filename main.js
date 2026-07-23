@@ -1,9 +1,13 @@
+const sortie = document.querySelector("#sortie");
+function afficher(html) {
+  sortie.innerHTML += html;
+}
 // Function to calculate IMC
 const imcMaker = (userWeight, userHeight) => {
   // Making the operation
   const imc = userWeight / (userHeight * userHeight);
 
-  //   conditional statement to determinate the category by imc
+  // conditional statement to determinate the category by imc
   let category = "";
   if (imc < 18.5) {
     category = "maigreur";
@@ -15,9 +19,9 @@ const imcMaker = (userWeight, userHeight) => {
     category = "obésité";
   }
   //   outpot the result
-  console.log(
-    `Votre IMC est : ${imc.toFixed(2)} . vous etes dans la categorie : ${category}`,
-  );
+  const messageHTML = `<p class="resultat">Votre IMC est : <strong>${imc.toFixed(2)}</strong>. Vous êtes dans la catégorie : <strong>${category}</strong> . Poids: ${userWeight} Kg | taille: ${userHeight} m</p>`;
+
+  afficher(messageHTML);
   //   return the final value
   return category;
 };
