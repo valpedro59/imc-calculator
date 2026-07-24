@@ -1,38 +1,158 @@
+/* Déclaration des variables globales */
 :root {
-  --vert: #10b981;
-  --rouge: #ef4444;
-  --texte: #1f2937;
-  --texte-clair: #6b7280;
-  --fond: #f9fafb;
-  --carte: #ffffff;
-  --rayon: 12px;
-  --espace: 1rem;
+  /* Nuancier principal */
+  --couleur-fond: #f8fafc;
+  --couleur-carte: #ffffff;
+  --couleur-texte-principal: #0f172a;
+  --couleur-texte-secondaire: #64748b;
+  --couleur-bordure: #e2e8f0;
+  --couleur-zebre: #f1f5f9;
+
+  /* Variables pour les catégories d'IMC */
+  --bg-maigreur: #e0f2fe;
+  --texte-maigreur: #0369a1;
+  --bg-normal: #dcfce7;
+  --texte-normal: #15803d;
+  --bg-surpoids: #fef3c7;
+  --texte-surpoids: #b45309;
+  --bg-obesite: #fee2e2;
+  --texte-obesite: #b91c1c;
+
+  /* Propriétés de surface */
+  --ombre-legere:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --arrondi: 12px;
 }
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
+/* Styles globaux et structure de la page */
 body {
   font-family:
+    "Segoe UI",
     system-ui,
     -apple-system,
     sans-serif;
-  line-height: 1.6;
-  color: var(--texte);
-  background: var(--fond);
-  padding: var(--espace);
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte-principal);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-.carte {
-  background: var(--carte);
-  border-radius: var(--rayon);
+
+/* Hiérarchie typographique et entêtes */
+.entete {
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.entete h1 {
+  font-size: 2.25rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.sous-titre {
+  font-size: 1rem;
+  color: var(--couleur-texte-secondaire);
+  margin: 0;
+}
+
+/* Main avec alignement de la carte */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1.5rem;
-  max-width: 640px;
-  margin: 0 auto;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-@media (min-width: 768px) {
-  body {
-    padding: 2rem;
-  }
+
+/* Design de la carte principale */
+.carte {
+  background-color: var(--couleur-carte);
+  max-width: 640px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: var(--arrondi);
+  box-shadow: var(--ombre-legere);
+  box-sizing: border-box;
+}
+
+.carte h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Structure du tableau */
+.tableau-imc {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.tableau-imc th,
+.tableau-imc td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.tableau-imc th {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte-secondaire);
+  font-weight: 600;
+  border-bottom: 2px solid var(--couleur-bordure);
+}
+
+.tableau-imc td {
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+
+/* Zébrage automatique des lignes */
+.tableau-imc tbody tr:nth-child(even) {
+  background-color: var(--couleur-zebre);
+}
+
+/* Classes spécifiques aux tranches d'IMC (Surcharge du fond) */
+.maigreur {
+  background-color: var(--bg-maigreur) !important;
+  color: var(--texte-maigreur);
+  font-weight: 500;
+}
+
+.normal {
+  background-color: var(--bg-normal) !important;
+  color: var(--texte-normal);
+  font-weight: 500;
+}
+
+.surpoids {
+  background-color: var(--bg-surpoids) !important;
+  color: var(--texte-surpoids);
+  font-weight: 500;
+}
+
+.obesite {
+  background-color: var(--bg-obesite) !important;
+  color: var(--texte-obesite);
+  font-weight: 500;
+}
+
+/* Zone d'affichage des résultats dynamiques */
+#sortie {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Pied de page */
+.pied {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--couleur-texte-secondaire);
+  border-top: 1px solid var(--couleur-bordure);
 }

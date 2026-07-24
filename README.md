@@ -21,6 +21,15 @@ Pour exécuter ce script, vous avez simplement besoin de :
 1 [Node.js](https://nodejs.org) installé sur votre machine, **OU**
 2 Un navigateur web (via la console des outils de développement).
 
+## Architecture du projet
+
+```
+├── index.html   # Structure sémantique globale du projet
+├── style.css    # Design graphique et gestion des variables de styles
+├── main.js     # Script de logique métier (calcul et affichage)
+└── README.md    # Documentation du projet
+```
+
 ## Utilisation
 
 Appelez uniquement la fonction **IMC Maker** en ajoutant votre **poids** en Kg et votre **taille** en metres.
